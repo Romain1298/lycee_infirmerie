@@ -1,15 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.7.34031.279
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfirmerieGUI", "GestionInfirmerie\InfirmerieGUI.csproj", "{FE62E7CD-A71B-414A-B27B-4BDCB9AD4A2D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfirmerieBLL", "InfirmerieBLL\InfirmerieBLL.csproj", "{7767BEEA-9951-4200-BA0E-7994BB0855C7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfirmerieBO", "InfirmerieBO\InfirmerieBO.csproj", "{D102753F-B4AA-445F-9B0B-74839CD5C4BF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfirmerieDAL", "InfirmerieDAL\InfirmerieDAL.csproj", "{AE5B6E14-5808-4C50-B04B-94B6C1001061}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionInfirmerie", "GestionInfirmerie\GestionInfirmerie.csproj", "{FE62E7CD-A71B-414A-B27B-4BDCB9AD4A2D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,18 +15,6 @@ Global
 		{FE62E7CD-A71B-414A-B27B-4BDCB9AD4A2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE62E7CD-A71B-414A-B27B-4BDCB9AD4A2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE62E7CD-A71B-414A-B27B-4BDCB9AD4A2D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7767BEEA-9951-4200-BA0E-7994BB0855C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7767BEEA-9951-4200-BA0E-7994BB0855C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7767BEEA-9951-4200-BA0E-7994BB0855C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7767BEEA-9951-4200-BA0E-7994BB0855C7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D102753F-B4AA-445F-9B0B-74839CD5C4BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D102753F-B4AA-445F-9B0B-74839CD5C4BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D102753F-B4AA-445F-9B0B-74839CD5C4BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D102753F-B4AA-445F-9B0B-74839CD5C4BF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AE5B6E14-5808-4C50-B04B-94B6C1001061}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AE5B6E14-5808-4C50-B04B-94B6C1001061}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AE5B6E14-5808-4C50-B04B-94B6C1001061}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AE5B6E14-5808-4C50-B04B-94B6C1001061}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

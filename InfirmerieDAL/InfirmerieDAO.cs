@@ -1,63 +1,76 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using InfirmerieBO;
+using InfirmerieDAL;
 
 namespace InfirmerieDAL
 {
-    internal class InfirmerieDAO
+    public class UtilisateurDAO
     {
-        private static InfirmerieDAO unInfirmerieDAO;
+        private static UtilisateurDAO unUtilisateurDAO;
         // Accesseur en lecture, renvoi une instance
-        public static InfirmerieDAO GetunInfirmerieDAO()
+        public static UtilisateurDAO GetunUtilisateurDAO()
         {
-            if (unInfirmerieDAO == null)
+            if (unUtilisateurDAO == null)
             {
-                unInfirmerieDAO = new InfirmerieDAO();
+                unUtilisateurDAO = new UtilisateurDAO();
             }
-            return unInfirmerieDAO;
+            return unUtilisateurDAO;
         }
 
-        // Cette méthode retourne une List contenant les objets Infirmeries
+        // Cette méthode retourne une List contenant les objets Utilisateurs
         //contenus dans la table Identification
-        public static List<Infirmerie> GetInfirmeries()
+        public static List<Utilisateur> GetUtilisateurs()
         {
             int id;
             string nom;
-            Infirmerie unInfirmerie;
+            string password;
+            Utilisateur unUtilisateur;
             // Connexion à la BD
             SqlConnection maConnexion = ConnexionBD.GetConnexionBD().GetSqlConnexion();
-            // Création d'une liste vide d'objets Infirmeries
-            List<Infirmerie> lesInfirmeries = new List<Infirmerie>();
+            // Création d'une liste vide d'objets Utilisateurs
+            List<Utilisateur> lesUtilisateurs = new List<Utilisateur>();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = maConnexion;
-            cmd.CommandText = " SELECT * FROM T_Identification";
+            cmd.CommandText = " SELECT * FROM Utilisateur";
             SqlDataReader monReader = cmd.ExecuteReader();
             // Remplissage de la liste
             while (monReader.Read())
             {
-                id = Int32.Parse(monReader["Id_Infirmerie"].ToString());
-                if (monReader["Nom_Infirmerie"] == DBNull.Value)
+                id = Int32.Parse(monReader["id_utilisateur"].ToString());
+                if (monReader["nom_utilisateur"] == DBNull.Value)
                 {
                     nom = default(string);
                 }
                 else
                 {
-                    nom = monReader["Nom_Infirmerie"].ToString();
+                    nom = monReader["Nom_Utilisateur"].ToString();
                 }
-                unInfirmerie = new Infirmerie(id, nom);
-                lesInfirmeries.Add(unInfirmerie);
+                if (monReader["mot_de_passe_utilisateur"] == DBNull.Value)
+                {
+                    password = default(string);
+                }
+                else
+                {
+                    password = monReader["mot_de_passe_utilisateur"].ToString();
+                }
+
+                unUtilisateur = new Utilisateur(nom, password);
+                lesUtilisateurs.Add(unUtilisateur);
             }
             // Fermeture de la connexion
             maConnexion.Close();
-            return lesInfirmeries;
+            return lesUtilisateurs;
         }
 
-        // Cette méthode insert un nouvel Infirmerie passé en paramètre dans la BD
-        public static int AjoutInfirmerie(Infirmerie unInfirmerie)
+        // Cette méthode insert un nouvel Utilisateur passé en paramètre dans la BD
+        public static int AjoutUtilisateur(Utilisateur unUtilisateur)
         {
             int nbEnr;
             // Connexion à la BD
@@ -65,44 +78,55 @@ namespace InfirmerieDAL
            ConnexionBD.GetConnexionBD().GetSqlConnexion();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = maConnexion;
-            cmd.CommandText = "INSERT INTO T_Identification values('" +
-           unInfirmerie.Nom + "')";
+            cmd.CommandText = "INSERT INTO Utilisateur (nom_utilisateur, mot_de_passe_utilisateur) values( @nom, @password) ";
+            SqlParameter paramNom = new SqlParameter("@nom", SqlDbType.VarChar, 255);
+            paramNom.Value = unUtilisateur.Nom;
+            cmd.Parameters.Add(paramNom);
+            // Paramètre password
+            SqlParameter paramPassword = new SqlParameter("@password", SqlDbType.VarChar, 255);
+            paramPassword.Value = unUtilisateur.Password;
+            cmd.Parameters.Add(paramPassword);
             nbEnr = cmd.ExecuteNonQuery();
             // Fermeture de la connexion
             maConnexion.Close();
             return nbEnr;
         }
-        // Cette méthode modifie un Infirmerie passé en paramètre dans la BD
-        public static int UpdateInfirmerie(Infirmerie unInfirmerie)
+        // Cette méthode modifie un Utilisateur passé en paramètre dans la BD
+        public static int UpdateUtilisateur(Utilisateur unUtilisateur)
         {
             int nbEnr;
             // Connexion à la BD
-            SqlConnection maConnexion =
-           ConnexionBD.GetConnexionBD().GetSqlConnexion();
+            SqlConnection maConnexion = ConnexionBD.GetConnexionBD().GetSqlConnexion();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = maConnexion;
-            cmd.CommandText = "UPDATE T_Identification SET Nom_Infirmerie = '"
-           + unInfirmerie.Nom + "' WHERE Id_Infirmerie = " + unInfirmerie.Id;
+            cmd.CommandText = "UPDATE Utilisateur SET nom_utilisateur = @nom, mot_de_passe_utilisateur = @password WHERE id_utilisateur = " + unUtilisateur.Id;
+            SqlParameter paramNom = new SqlParameter("@nom", SqlDbType.VarChar, 255);
+            paramNom.Value = unUtilisateur.Nom;
+            cmd.Parameters.Add(paramNom);
+            // Paramètre password
+            SqlParameter paramPassword = new SqlParameter("@password", SqlDbType.VarChar, 255);
+            paramPassword.Value = unUtilisateur.Password;
+            cmd.Parameters.Add(paramPassword);
             nbEnr = cmd.ExecuteNonQuery();
             // Fermeture de la connexion
             maConnexion.Close();
             return nbEnr;
         }
-        // Cette méthode supprime de la BD un Infirmerie dont l'id est passé
+        // Cette méthode supprime de la BD un Utilisateur dont l'id est passé
         //en paramètre
-        public static int DeleteInfirmerie(int id)
-        {
-            int nbEnr;
+        //public static int DeleteUtilisateur(int id)
+        //{
+            //int nbEnr;
             // Connexion à la BD
-            SqlConnection maConnexion =
-           ConnexionBD.GetConnexionBD().GetSqlConnexion();
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = maConnexion;
-            cmd.CommandText = "DELETE FROM T_Identification WHERE Id_Infirmerie = " + id;
-            nbEnr = cmd.ExecuteNonQuery();
+            //SqlConnection maConnexion =
+          // ConnexionBD.GetConnexionBD().GetSqlConnexion();
+           // SqlCommand cmd = new SqlCommand();
+           // cmd.Connection = maConnexion;
+           // cmd.CommandText = "DELETE FROM T_Identification WHERE Id_Utilisateur = " + id;
+           // nbEnr = cmd.ExecuteNonQuery();
             // Fermeture de la connexion
-            maConnexion.Close();
-            return nbEnr;
-        }
+           // maConnexion.Close();
+           // return nbEnr;
+       // }
     }
 }

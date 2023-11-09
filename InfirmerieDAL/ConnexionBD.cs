@@ -31,10 +31,7 @@ namespace InfirmerieDAL
             }
             return uneConnexionBD;
         }
-        // Constructeur privé
-        private ConnexionBD()
-        {
-        }
+        
         public SqlConnection GetSqlConnexion()
         {
             if (maConnexion == null)

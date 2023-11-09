@@ -41,7 +41,7 @@ namespace InfirmerieGUI
         private void btnConnexion_Click(object sender, EventArgs e)
         {
             Utilisateur unUser = new Utilisateur(txtUsername.Text, textPassword.Text);
-            GestionInfirmeries.CreerUtilisateur(unUser);
+
             List<Utilisateur> listUtilisateurs = new List<Utilisateur>();
             listUtilisateurs = GestionInfirmeries.GetUtilisateurs();
 
@@ -56,7 +56,7 @@ namespace InfirmerieGUI
                 }
             }
 
-            if (userFind)
+            if (userFind == true)
             {
                 MessageBox.Show("Bonjour," + unUser.Nom + " vous êtes bien connecté.");
             }

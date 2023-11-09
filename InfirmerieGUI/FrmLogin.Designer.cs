@@ -177,7 +177,7 @@ namespace InfirmerieGUI
             // 
             // picPassword
             // 
-            this.picPassword.Image = global::GestionInfirmerie.Properties.Resources.padlock;
+            this.picPassword.Image = global::InfirmerieGUI.Properties.Resources.padlock;
             this.picPassword.Location = new System.Drawing.Point(65, 242);
             this.picPassword.Margin = new System.Windows.Forms.Padding(5);
             this.picPassword.Name = "picPassword";
@@ -190,7 +190,7 @@ namespace InfirmerieGUI
             // picLSV
             // 
             this.picLSV.BackColor = System.Drawing.Color.Transparent;
-            this.picLSV.Image = global::GestionInfirmerie.Properties.Resources.logoStVincent__1_;
+            this.picLSV.Image = global::InfirmerieGUI.Properties.Resources.logoStVincent__1_;
             this.picLSV.Location = new System.Drawing.Point(114, 14);
             this.picLSV.Margin = new System.Windows.Forms.Padding(5);
             this.picLSV.Name = "picLSV";
@@ -202,7 +202,7 @@ namespace InfirmerieGUI
             // 
             // picUser
             // 
-            this.picUser.Image = global::GestionInfirmerie.Properties.Resources.user__1_;
+            this.picUser.Image = global::InfirmerieGUI.Properties.Resources.user__1_;
             this.picUser.Location = new System.Drawing.Point(65, 208);
             this.picUser.Margin = new System.Windows.Forms.Padding(5);
             this.picUser.Name = "picUser";
@@ -213,7 +213,7 @@ namespace InfirmerieGUI
             // 
             // btnClose
             // 
-            this.btnClose.Image = global::GestionInfirmerie.Properties.Resources.cfafda99_2287_4a22_9f42_375d72734804;
+            this.btnClose.Image = global::InfirmerieGUI.Properties.Resources.cfafda99_2287_4a22_9f42_375d72734804;
             this.btnClose.Location = new System.Drawing.Point(773, 3);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(35, 35);

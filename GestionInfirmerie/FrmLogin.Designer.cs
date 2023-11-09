@@ -1,5 +1,5 @@
 ﻿
-namespace GestionInfirmerie
+namespace InfirmerieGUI
 {
     partial class FrmLogin
     {

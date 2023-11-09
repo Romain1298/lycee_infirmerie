@@ -8,14 +8,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using InfirmerieBO;
+using InfirmerieBLL;
+using System.Configuration;
 
-namespace GestionInfirmerie
+namespace InfirmerieGUI
 {
     public partial class FrmLogin : Form
     {
         public FrmLogin()
         {
             InitializeComponent();
+            GestionInfirmeries.SetchaineConnexion(ConfigurationManager.ConnectionStrings["Infirmerie"]);
+
         }
 
         private void FrmLogin_Load(object sender, EventArgs e)
@@ -35,10 +40,25 @@ namespace GestionInfirmerie
 
         private void btnConnexion_Click(object sender, EventArgs e)
         {
-            if (txtUsername.Text == "Romain" && textPassword.Text == "Romain")
+            Utilisateur unUser = new Utilisateur(txtUsername.Text, textPassword.Text);
+            GestionInfirmeries.CreerUtilisateur(unUser);
+            List<Utilisateur> listUtilisateurs = new List<Utilisateur>();
+            listUtilisateurs = GestionInfirmeries.GetUtilisateurs();
+
+            bool userFind = false;
+
+            for (int i = 0; i < listUtilisateurs.Count; i++)
             {
-                new FormUse().Show();
-                this.Hide();
+                if (unUser.Nom == listUtilisateurs[i].Nom && unUser.Password == listUtilisateurs[i].Password)
+                {
+                    userFind = true;
+                    break;
+                }
+            }
+
+            if (userFind)
+            {
+                MessageBox.Show("Bonjour," + unUser.Nom + " vous êtes bien connecté.");
             }
             else
             {
@@ -47,6 +67,7 @@ namespace GestionInfirmerie
                 textPassword.Clear();
                 textPassword.Focus();
             }
+
         }
 
         private void lblDelete_Click(object sender, EventArgs e)

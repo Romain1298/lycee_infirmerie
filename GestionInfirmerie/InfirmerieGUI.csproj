@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -109,6 +110,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logoStVincent %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InfirmerieBLL\InfirmerieBLL.csproj">
+      <Project>{fe4fc1f9-14fa-4927-bf22-699a5ed2c617}</Project>
+      <Name>InfirmerieBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InfirmerieBO\InfirmerieBO.csproj">
+      <Project>{2635a061-a5cb-448b-a3fc-4f8aad0defbe}</Project>
+      <Name>InfirmerieBO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

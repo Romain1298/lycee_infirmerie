@@ -8,18 +8,18 @@ using System.Configuration;
 using InfirmerieDAL;
 using InfirmerieBO;
 
-namespace InfirmerieGUI
+namespace InfirmerieBLL
 {
-    public class GestionInfirmerie
+    public class GestionInfirmeries
     {
-        private static GestionInfirmerie uneGestionInfirmerie; // objet BLL
+        private static GestionInfirmeries uneGestionInfirmerie; // objet BLL
 
         // Accesseur en lecture
-        public static GestionInfirmerie GetGestionInfirmerie()
+        public static GestionInfirmeries GetGestionInfirmerie()
         {
             if (uneGestionInfirmerie == null)
             {
-                uneGestionInfirmerie = new GestionInfirmerie();
+                uneGestionInfirmerie = new GestionInfirmeries();
             }
             return uneGestionInfirmerie;
         }

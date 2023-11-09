@@ -35,7 +35,7 @@ namespace GestionInfirmerie
 
         private void btnConnexion_Click(object sender, EventArgs e)
         {
-            if (textUsername.Text == "Romain" && textPassword.Text == "Romain")
+            if (txtUsername.Text == "Romain" && textPassword.Text == "Romain")
             {
                 new FormUse().Show();
                 this.Hide();
@@ -43,7 +43,7 @@ namespace GestionInfirmerie
             else
             {
                 MessageBox.Show("Le nom d'utilisateur ou le Mot de passe est incorrect, veuillez réessayer");
-                textUsername.Clear();
+                txtUsername.Clear();
                 textPassword.Clear();
                 textPassword.Focus();
             }
@@ -51,9 +51,9 @@ namespace GestionInfirmerie
 
         private void lblDelete_Click(object sender, EventArgs e)
         {
-            textUsername.Clear();
+            txtUsername.Clear();
             textPassword.Clear();
-            textUsername.Focus();
+            txtUsername.Focus();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -101,6 +101,30 @@ namespace GestionInfirmerie
         }
 
         private void lblNom_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void picPassword_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void txtUsername_Click(object sender, EventArgs e)
+        {
+            txtUsername.Clear();
+        }
+
+        private void lblInfirmerie_Click(object sender, EventArgs e)
         {
 
         }

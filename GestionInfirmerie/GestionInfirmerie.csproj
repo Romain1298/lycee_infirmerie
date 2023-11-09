@@ -104,5 +104,11 @@
   <ItemGroup>
     <None Include="Resources\cfafda99-2287-4a22-9f42-375d72734804.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LSV-Senlis.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logoStVincent %281%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
